@@ -1,7 +1,0 @@
-Jpa:
-    http://www.thejavageek.com/jpa-tutorials/
-	http://www.thejavageek.com/2014/01/12/jpa-crud-example/
-
-Spring Data Jpa:
-	https://www.petrikainulainen.net/programming/spring-framework/spring-data-jpa-tutorial-part-four-jpa-criteria-queries/
-	http://www.thejavageek.com/2017/02/25/spring-data-jpa-query-methods/

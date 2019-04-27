@@ -1,9 +1,0 @@
-spring core annotations:
-https://www.baeldung.com/spring-core-annotations
-https://www.journaldev.com/16966/spring-annotations
-
-https://www.journaldev.com/2623/spring-autowired-annotation
-
-Spring MVC annotations:
-https://docs.spring.io/spring/docs/current/spring-framework-reference/web.html#mvc-controller
-https://www.baeldung.com/spring-mvc-annotations
