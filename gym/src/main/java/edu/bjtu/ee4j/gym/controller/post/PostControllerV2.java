@@ -3,6 +3,7 @@ package edu.bjtu.ee4j.gym.controller.post;
 import edu.bjtu.ee4j.gym.exception.PostNotFoundException;
 import edu.bjtu.ee4j.gym.model.post.Post;
 import edu.bjtu.ee4j.gym.service.PostService;
+import edu.bjtu.ee4j.gym.transaction.rateLimit.RateLimit;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.cache.annotation.CacheEvict;
@@ -31,16 +32,17 @@ public class PostControllerV2 {
         return postService.getPostById(id);
     }
 
+    @RateLimit(perSecond = 3)
     @CachePut(value = "post-single", key = "#post.id")
-    @PostMapping("/create")
+    @PostMapping("/")
     public Post createPost(@RequestBody Post post) throws PostNotFoundException {
-        log.info("update post with {}", post);
+        log.info("create post with {}", post);
         postService.createPost(post);
         return post;
     }
 
     @CachePut(value = "post-single", key = "#post.id")
-    @PutMapping("/update/{id}")
+    @PutMapping("/{id}")
     public Post updatePostByID(@PathVariable long id, @RequestBody Post post) throws PostNotFoundException {
         post.setId(id);
         log.info("update post with {}", post);
@@ -49,7 +51,7 @@ public class PostControllerV2 {
     }
 
     @CacheEvict(value = "post-single", key = "#id")
-    @DeleteMapping("/delete/{id}")
+    @DeleteMapping("/{id}")
     public void deletePostByID(@PathVariable long id) throws PostNotFoundException {
         log.info("delete post with id {}", id);
         postService.deletePostById(id);

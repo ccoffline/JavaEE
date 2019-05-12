@@ -3,6 +3,7 @@ package edu.bjtu.ee4j.gym.controller.post;
 import edu.bjtu.ee4j.gym.exception.PostNotFoundException;
 import edu.bjtu.ee4j.gym.model.post.Post;
 import edu.bjtu.ee4j.gym.service.PostService;
+import edu.bjtu.ee4j.gym.transaction.rateLimit.RateLimit;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.cache.annotation.CacheEvict;
@@ -43,10 +44,11 @@ public class PostControllerV1 {
         return postService.getPostById(id);
     }
 
+    @RateLimit(perSecond = 3)
     @CachePut(value = "post-single", key = "#post.id")
     @PostMapping("/create")
     public Post createPost(@RequestBody Post post) throws PostNotFoundException {
-        log.info("update post with {}", post);
+        log.info("create post with {}", post);
         postService.createPost(post);
         return post;
     }
