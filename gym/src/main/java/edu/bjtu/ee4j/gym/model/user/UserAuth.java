@@ -1,4 +1,4 @@
-package edu.bjtu.ee4j.gym.model;
+package edu.bjtu.ee4j.gym.model.user;
 
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;

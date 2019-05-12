@@ -1,7 +1,7 @@
-package edu.bjtu.ee4j.gym.controller;
+package edu.bjtu.ee4j.gym.controller.post;
 
 import edu.bjtu.ee4j.gym.exception.PostNotFoundException;
-import edu.bjtu.ee4j.gym.model.Post;
+import edu.bjtu.ee4j.gym.model.post.Post;
 import edu.bjtu.ee4j.gym.service.PostService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -13,33 +13,21 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping("/post")
-public class PostController {
+@RequestMapping("/post/v2")
+public class PostControllerV2 {
 
-    private static final Logger log = LoggerFactory.getLogger(PostController.class);
+    private static final Logger log = LoggerFactory.getLogger(PostControllerV2.class);
 
     private final PostService postService;
 
-    public PostController(PostService postService) {
+    public PostControllerV2(PostService postService) {
         this.postService = postService;
     }
 
-    private static final long SLEEP_TIME = 1000 * 3;
-
-    private static void sleep() {
-        try {
-            System.out.println("Going to sleep for 3 Secs.. to simulate backend call.");
-            Thread.sleep(SLEEP_TIME);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
-    }
-
-    @Cacheable(value = "post-single", key = "#id", unless = "#result.shares < 500")
+    @Cacheable(value = "post-single", key = "#id")
     @GetMapping("/{id}")
     public Post getPostByID(@PathVariable long id) throws PostNotFoundException {
         log.info("get post with id {}", id);
-        sleep();
         return postService.getPostById(id);
     }
 
@@ -71,14 +59,7 @@ public class PostController {
     @GetMapping("/top")
     public List<Post> getTopPosts() {
         log.info("get top ten posts");
-        sleep();
         return postService.getTopSharedPosts(1, 10);
-    }
-
-    @CacheEvict(value = "post-top")
-    @GetMapping("/top/evict")
-    public void evictTopPosts() {
-        log.info("Evict post-top");
     }
 }
 

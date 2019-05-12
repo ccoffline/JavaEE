@@ -1,4 +1,4 @@
-package edu.bjtu.ee4j.gym.model;
+package edu.bjtu.ee4j.gym.model.user;
 
 import javax.persistence.*;
 import java.io.Serializable;
@@ -16,35 +16,31 @@ public class User implements Serializable {
 
     private String email;
 
-    public User() {
-    }
-
-    public User(Integer id) {
-        this.id = id;
-    }
-
     public Integer getId() {
         return id;
     }
 
-    public void setId(Integer id) {
+    public User setId(Integer id) {
         this.id = id;
+        return this;
     }
 
     public String getUsername() {
         return username;
     }
 
-    public void setUsername(String username) {
+    public User setUsername(String username) {
         this.username = username;
+        return this;
     }
 
     public String getEmail() {
         return email;
     }
 
-    public void setEmail(String email) {
+    public User setEmail(String email) {
         this.email = email;
+        return this;
     }
 
     @Override

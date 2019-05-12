@@ -1,4 +1,4 @@
-package edu.bjtu.ee4j.gym.model;
+package edu.bjtu.ee4j.gym.model.post;
 
 public class PostShares {
 

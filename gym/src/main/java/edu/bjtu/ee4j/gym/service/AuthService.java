@@ -1,12 +1,10 @@
 package edu.bjtu.ee4j.gym.service;
 
-import edu.bjtu.ee4j.gym.model.UserAuth;
+import edu.bjtu.ee4j.gym.model.user.UserAuth;
 import edu.bjtu.ee4j.gym.repository.AuthRepository;
 import edu.bjtu.ee4j.gym.util.StringUtil;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
-
-import java.util.Objects;
 
 @Service
 public class AuthService {

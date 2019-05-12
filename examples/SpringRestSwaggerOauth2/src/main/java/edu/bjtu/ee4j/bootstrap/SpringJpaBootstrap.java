@@ -19,7 +19,6 @@ public class SpringJpaBootstrap implements ApplicationListener<ContextRefreshedE
 
     private ProductRepository productRepository;
 
-
     private Logger log = LogManager.getLogger(SpringJpaBootstrap.class);
 
     @Autowired
@@ -52,8 +51,4 @@ public class SpringJpaBootstrap implements ApplicationListener<ContextRefreshedE
         log.info("Saved Mug - id:" + mug.getId());
     }
 
-
-    }
-
-
-
+}

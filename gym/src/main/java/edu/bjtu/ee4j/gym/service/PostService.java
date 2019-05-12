@@ -1,7 +1,6 @@
 package edu.bjtu.ee4j.gym.service;
 
-import edu.bjtu.ee4j.gym.model.Post;
-import edu.bjtu.ee4j.gym.model.User;
+import edu.bjtu.ee4j.gym.model.post.Post;
 import edu.bjtu.ee4j.gym.repository.PostRepository;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Sort;

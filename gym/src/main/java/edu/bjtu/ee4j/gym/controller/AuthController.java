@@ -1,6 +1,6 @@
 package edu.bjtu.ee4j.gym.controller;
 
-import edu.bjtu.ee4j.gym.model.UserAuth;
+import edu.bjtu.ee4j.gym.model.user.UserAuth;
 import edu.bjtu.ee4j.gym.service.AuthService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;

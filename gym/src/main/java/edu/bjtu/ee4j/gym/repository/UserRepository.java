@@ -1,6 +1,6 @@
 package edu.bjtu.ee4j.gym.repository;
 
-import edu.bjtu.ee4j.gym.model.User;
+import edu.bjtu.ee4j.gym.model.user.User;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 

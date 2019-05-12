@@ -1,0 +1,11 @@
+{
+    "configurations": [
+        {
+            "type": "java",
+            "name": "CodeLens (Launch) - LoginApplication",
+            "request": "launch",
+            "mainClass": "com.gpch.login.LoginApplication",
+            "projectName": "login"
+        }
+    ]
+}
