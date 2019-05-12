@@ -4,6 +4,7 @@ import edu.bjtu.ee4j.gym.exception.PostNotFoundException;
 import edu.bjtu.ee4j.gym.model.post.Post;
 import edu.bjtu.ee4j.gym.service.PostService;
 import edu.bjtu.ee4j.gym.transaction.rateLimit.RateLimit;
+import io.swagger.annotations.ApiOperation;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.cache.annotation.CacheEvict;
@@ -25,6 +26,7 @@ public class PostControllerV2 {
         this.postService = postService;
     }
 
+    @ApiOperation(value = "Search a post with an ID", response = Post.class)
     @Cacheable(value = "post-single", key = "#id")
     @GetMapping("/{id}")
     public Post getPostByID(@PathVariable long id) throws PostNotFoundException {
@@ -32,6 +34,7 @@ public class PostControllerV2 {
         return postService.getPostById(id);
     }
 
+    @ApiOperation(value = "create a post", response = Post.class)
     @RateLimit(perSecond = 3)
     @CachePut(value = "post-single", key = "#post.id")
     @PostMapping("/")
@@ -41,6 +44,7 @@ public class PostControllerV2 {
         return post;
     }
 
+    @ApiOperation(value = "update a post and return the result", response = Post.class)
     @CachePut(value = "post-single", key = "#post.id")
     @PutMapping("/{id}")
     public Post updatePostByID(@PathVariable long id, @RequestBody Post post) throws PostNotFoundException {
@@ -50,6 +54,7 @@ public class PostControllerV2 {
         return post;
     }
 
+    @ApiOperation(value = "delete a post", response = Post.class)
     @CacheEvict(value = "post-single", key = "#id")
     @DeleteMapping("/{id}")
     public void deletePostByID(@PathVariable long id) throws PostNotFoundException {
@@ -57,6 +62,7 @@ public class PostControllerV2 {
         postService.deletePostById(id);
     }
 
+    @ApiOperation(value = "get top ten posts", response = List.class)
     @Cacheable(value = "post-top")
     @GetMapping("/top")
     public List<Post> getTopPosts() {
