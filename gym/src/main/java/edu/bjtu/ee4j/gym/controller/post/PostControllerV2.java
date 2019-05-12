@@ -15,7 +15,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping("/post/v2")
+@RequestMapping("/post/2.0")
 public class PostControllerV2 {
 
     private static final Logger log = LoggerFactory.getLogger(PostControllerV2.class);

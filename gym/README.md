@@ -20,6 +20,12 @@ GYM DEMO
     * 使用spring security拦截未认证请求
     * 密码加密后入库
     * 多角色权限管理 ***待完成***
+* api versioning
+    * 对post路径下的api进行版本控制
+* swagger documenting
+    * 对post的api2.0版本建立swagger文档页面
+* rate limiting
+    * 对post的创建请求进行每秒上限为3的限流
 * cache
     * 实现spring cache连接windows redis对请求结果进行缓存
     
