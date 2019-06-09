@@ -4,14 +4,14 @@ GYM DEMO
 * 登录注册
 * 跳转登录页面
 * 发帖删帖
-* 页面待完成
 
 ##项目依赖
 * JDK:1.8
-* maven:4.0.0
-* spring boot:2.1.4
-* mysql:5.7.20
-* redis:3.2.100
+* Maven:4.0.0
+* Spring Boot:2.1.4
+* MySQL:5.7.20
+* Redis:3.2.100
+* MongoDB:4.0
 
 ##技术总览
 * jpa
@@ -19,7 +19,7 @@ GYM DEMO
 * security
     * 使用spring security拦截未认证请求
     * 密码加密后入库
-    * 多角色权限管理 ***待完成***
+    * 多角色权限管理
 * api versioning
     * 对post路径下的api进行版本控制
 * swagger documenting
@@ -28,6 +28,10 @@ GYM DEMO
     * 对post的创建请求进行每秒上限为3的限流
 * cache
     * 实现spring cache连接windows redis对请求结果进行缓存
+* web flux
+    * 对post的api3.0版本使用非阻塞式实现
+* reactive mongo
+    * 实现响应式持久层
     
 ##
 

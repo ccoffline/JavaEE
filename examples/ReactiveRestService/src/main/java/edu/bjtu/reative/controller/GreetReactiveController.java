@@ -15,16 +15,14 @@ public class GreetReactiveController {
 
 	@GetMapping("/greetings")
 	public Publisher<Greeting> greetingPublisher() {
-		Flux<Greeting> greetingFlux = Flux.<Greeting>generate(sink -> sink.next(new Greeting("Hello"))).take(50);
-		return greetingFlux;
+		return Flux.<Greeting>generate(sink -> sink.next(new Greeting("Hello"))).take(50);
 	}
 
 	@GetMapping(value = "/greetings/sse", produces = MediaType.TEXT_EVENT_STREAM_VALUE)
 	public Publisher<Greeting> sseGreetings() {
-		Flux<Greeting> delayElements = Flux
+		return Flux
 				.<Greeting>generate(sink -> sink.next(new Greeting("Hello @" + Instant.now().toString())))
 				.delayElements(Duration.ofSeconds(1));
-		return delayElements;
 	}
 
 }
