@@ -1,0 +1,56 @@
+server:
+  port: 9999
+
+#spring:
+#  datasource:
+#    url: jdbc:mysql://localhost:3306/user_db?user=root&password=000000&serverTimezone=Hongkong&useUnicode=true&characterEncoding=utf8&useSSL=false
+#    driver-class-name: com.mysql.cj.jdbc.Driver
+
+
+
+#mysql
+spring:
+  datasource:
+    url: jdbc:mysql://localhost:3306/clubsys_db?user=root&password=000000&serverTimezone=Hongkong&useUnicode=true&characterEncoding=utf8&useSSL=false
+#    username: root
+#    password: 000000
+    driver-class-name: com.mysql.cj.jdbc.Driver
+  mvc:
+    view:
+      prefix: /WEB-INF/
+      suffix: .jsp
+  kafka:
+    producer:
+      bootstrap-servers: localhost:9092
+      key-serializer:
+      value-serializer:
+    consumer:
+      group-id: user-log-group
+      auto-offset-reset: earliest
+      enable-auto-commit: true
+      auto-commit-interval: 100
+#    static-path-pattern: /WEB-INF/*
+#mybatis-plus
+mybatis-plus:
+  config-location: classpath:mybatis-config.xml
+#  mapper-locations: classpath:user/persistence/*.xml
+#  base-package: com.lxbb.user.user.persistence
+#  mapper-locations: classpath:com/lxbb/user/**/persistence/*.class
+#  type-aliases-package: com.lxbb.user.**.domain
+#  mapper-locations: classpath:com/lxbb/user/**/persistence/*.xml
+
+#  type-handlers-package
+  global-config:
+    db-config:
+      id-type: auto
+      field-strategy: not_empty
+        #驼峰下划线转换
+      column-underline: true
+        #逻辑删除配置
+      logic-delete-value: 0
+      logic-not-delete-value: 1
+      db-type: mysql
+    refresh: false
+  configuration:
+    map-underscore-to-camel-case: true
+    cache-enabled: false
