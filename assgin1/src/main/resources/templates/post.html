@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>post</title>
+</head>
+<body>
+<form id="login_form" action="" method="POST">
+    <div class="login_frame" style="position:relative" ;>
+        <div class="login_gl" style="margin-top:35px;">
+            <span class="login_wz">后台管理系统</span>
+        </div>
+
+        <div class="login_user">
+            <input id="username" name="username" type="text" placeholder="请输入您的用户名" value=""
+                   style="width:100%;height:32px;border-style:none;font-size:16px;color:#959595;"/>
+        </div>
+
+        <div class="login_user">
+            <input id="password" name="password" type="password" placeholder="请输入您的密码" value=""
+                   style="width:100%;height:32px;border-style:none;font-size:16px;color:#959595;"/>
+        </div>
+
+        <div id="login_btn" class="login_log">
+            <span style="font-size:16px;">登录</span>
+        </div>
+    </div>
+</form>
+</div>
+<script type="text/javascript" src="js/jquery-3.4.0.js"/>
+<script type="text/javascript">
+    $("#login_btn").click(function () {
+        var username = $.trim($("#username").val());
+        var password = $.trim($("#password").val());
+        if (username == "") {
+            alert("请输入用户名");
+            return false;
+        } else if (password == "") {
+            alert("请输入密码");
+            return false;
+        }
+        //ajax去服务器端校验
+        var data = {username: username, password: password};
+
+        $.ajax({
+            type: "POST",
+            url: "__CONTROLLER__/check_login",
+            data: data,
+            dataType: 'json',
+            success: function (msg) {
+                //alert(msg);
+                if (msg == 1) {
+                    window.location.href = "{:U('Index/personal')}";
+                } else {
+                    alert("登录失败，请重试!");
+                }
+            }
+        });
+    });
+</script>
+</body>
+</html>
