@@ -21,10 +21,6 @@ public class PostService {
         return postRepository.findById(id);
     }
 
-    public List<Post> getPostsByAuthor(int userId) {
-        return postRepository.getPostsByAuthorId(userId);
-    }
-
     public void createPost(Post post) {
         post.setId(null);
         postRepository.save(post);
